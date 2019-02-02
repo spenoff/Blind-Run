@@ -1,0 +1,42 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+After loading the script.
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "/Applications/renpy-7.1.3-sdk/renpy/bootstrap.py", line 313, in bootstrap
+    renpy.main.main()
+  File "/Applications/renpy-7.1.3-sdk/renpy/main.py", line 415, in main
+    if renpy.parser.report_parse_errors():
+  File "/Applications/renpy-7.1.3-sdk/renpy/parser.py", line 2787, in report_parse_errors
+    renpy.display.error.report_parse_errors(full_text, error_fn)
+  File "/Applications/renpy-7.1.3-sdk/renpy/display/error.py", line 187, in report_parse_errors
+    error_fn=error_fn,
+  File "/Applications/renpy-7.1.3-sdk/renpy/game.py", line 281, in invoke_in_new_context
+    return callable(*args, **kwargs)
+  File "/Applications/renpy-7.1.3-sdk/renpy/display/error.py", line 45, in call_exception_screen
+    return renpy.ui.interact(mouse="screen", type="screen", suppress_overlay=True, suppress_underlay=True)
+  File "/Applications/renpy-7.1.3-sdk/renpy/ui.py", line 289, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-7.1.3-sdk/renpy/display/core.py", line 2672, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "/Applications/renpy-7.1.3-sdk/renpy/display/core.py", line 3350, in interact_core
+    self.quit_event()
+  File "/Applications/renpy-7.1.3-sdk/renpy/display/core.py", line 2376, in quit_event
+    renpy.exports.take_screenshot()
+  File "/Applications/renpy-7.1.3-sdk/renpy/exports.py", line 1599, in take_screenshot
+    renpy.game.interface.take_screenshot(scale, background=background)
+  File "/Applications/renpy-7.1.3-sdk/renpy/display/core.py", line 2122, in take_screenshot
+    surf = renpy.display.scale.smoothscale(surf, scale)
+  File "/Applications/renpy-7.1.3-sdk/renpy/display/scale.py", line 95, in real_smoothscale
+    dest = pgrender.surface_unscaled(size, src)
+  File "/Applications/renpy-7.1.3-sdk/renpy/display/pgrender.py", line 118, in surface
+    surf = Surface((width + 4, height + 4), 0, sample)
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+
+Darwin-16.7.0-x86_64-i386-64bit
+Ren'Py 7.1.3.1092
+ 
+Sat Feb  2 11:33:24 2019
