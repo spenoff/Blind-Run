@@ -9,6 +9,7 @@ define witch_voice = Character("???", what_color="#41d846")
 define witch = Character("Witch", what_color="#41d846")
 define treasure_chest = Character()
 define max_time = 120
+define show_blindness_time = False
 
 # The game starts here.
 
@@ -28,14 +29,14 @@ label start:
         cub_found = False
         treasure_chest_discovered = False
         treasure_key_obtained = False
-        show_bindness_time = False
         #spaces_entered = -1
         blindness_time = 130
         poison_direction = -1 #0 if entered from one_three, 1 if entered from two_four
+        sub_time = 10
 
         #methods
         def bindness_time_overlay():
-            if show_bindness_time:
+            if show_blindness_time:
                 ui.frame()
                 ui.vbox()
                 ui.text("Time until blindness")
@@ -58,15 +59,19 @@ label start:
     witch "Good luck!"
     witch "Hehehe"
     scene Forest
-    $ show_bindness_time=True
+    $ show_blindness_time=True
     narrator "You have entered the forest. The journey begins!"
 
     jump one_two
 
 label one_one:
     python:
-        blindness_time -= 10
+        blindness_time -= sub_time
         treasure_chest_discovered = True
+
+    if not blind:
+        $ show_blindness_time=True
+
 
     show treasure_chest
 
@@ -103,12 +108,9 @@ label one_one:
 
 label one_two:
     python:
-        blindness_time -= 10
+        blindness_time -= sub_time
 
     narrator "Where will you go?"
-
-    if blindness_time == 0:
-        witch "BLIND"
 
     if not blind:
         menu:
@@ -129,12 +131,11 @@ label one_two:
 
 label one_three:
     python:
-        blindness_time -= 10
+        blindness_time -= sub_time
 
     narrator "Where will you go?"
 
     if not blind:
-
 
         menu:
 
@@ -157,9 +158,10 @@ label one_three:
 
 label one_four:
     python:
-        blindness_time -= 10
+        blindness_time -= sub_time
 
     if not entered_poison:
+
         if poison_direction == 0:
             narrator "This area is filled with poison gas! Did you not read the sign?"
             narrator "You barely escape alive."
@@ -169,7 +171,7 @@ label one_four:
 
             jump one_three
 
-        elif poison_direction = 1:
+        elif poison_direction == 1:
             narrator "This area is filled with poison gas!"
             narrator "You barely escape alive."
 
@@ -184,7 +186,109 @@ label one_four:
         narrator "GAME OVER"
         return
 
+label two_one:
+    python:
+        blindness_time -= sub_time
+
+    narrator "Where will you go?"
+
+    if not blind:
+
+        menu:
+
+            narrator "Where will you go?"
+
+            "forward":
+                narrator "You move forward. 10 seconds pass."
+                jump three_one
+
+            "right":
+                narrator "You move rightward. 10 seconds pass."
+                jump two_two
+
+            "downward":
+                narrator "You move downward. 10 seconds pass."
+                jump one_one
 
 label two_two:
     python:
-        blindness_time -= 10
+        blindness_time -= sub_time
+
+    narrator "Where will you go?"
+
+    if not blind:
+
+        menu:
+
+            narrator "Where will you go?"
+
+            "forward":
+                narrator "You move forward. 10 seconds pass."
+                jump three_two
+
+            "left":
+                narrator "You move leftward. 10 seconds pass."
+                jump two_one
+
+            "right":
+                narrator "You move rightward. 10 seconds pass."
+                jump two_three
+
+            "downward":
+                narrator "You move downward. 10 seconds pass."
+                jump one_two
+
+label two_three:
+    python:
+        blindness_time -= sub_time
+
+    narrator "Where will you go?"
+
+    if not blind:
+
+        menu:
+
+            narrator "Where will you go?"
+
+            "forward":
+                narrator "You move forward. 10 seconds pass."
+                jump three_three
+
+            "left":
+                narrator "You move leftward. 10 seconds pass."
+                jump two_two
+
+            "right":
+                narrator "You move rightward. 10 seconds pass."
+                jump two_four
+
+            "downward":
+                narrator "You move downward. 10 seconds pass."
+                jump one_three
+
+label two_four:
+    python:
+        blindness_time -= sub_time
+
+    narrator "Where will you go?"
+
+    if not blind:
+
+        menu:
+
+            narrator "Where will you go?"
+
+            "forward":
+                narrator "You move forward. 10 seconds pass."
+                jump three_four
+
+            "left":
+                narrator "You move leftward. 10 seconds pass."
+                jump two_three
+
+            "downward":
+                python:
+                    poison_direction = 1
+
+                narrator "You move downward. 10 seconds pass."
+                jump one_four
