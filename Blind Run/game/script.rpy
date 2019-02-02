@@ -7,6 +7,7 @@
 define narrator = Character("Narrator")
 define witch_voice = Character("???", what_color="#41d846")
 define witch = Character("Witch", what_color="#41d846")
+define treasure_chest = Character()
 
 # The game starts here.
 
@@ -23,6 +24,8 @@ label start:
         blind = False
         entered_poison = False
         cub_found = False
+        treasure_chest_discovered = False
+        treasure_key_obtained = False
         spaces_entered = -1
         poison_direction = -1 #0 if entered from one_three, 1 if entered from two_four
 
@@ -46,6 +49,39 @@ label start:
 label one_one:
     python:
         spaces_entered += 1
+        treasure_chest_discovered = True
+
+    show treasure_chest
+
+    if blind:
+        narrator "You can feel the treasure chest."
+    else:
+        narrator "You found the treasure chest!"
+
+    narrator "You try to open it."
+
+    if treasure_key_obtained:
+        narrator "But wait! You have the key!"
+        narrator "You unlock the treasure chest and open it"
+        narrator "Congratulations! You found the treasure"
+        narrator "Thank you so much for playing our game!"
+        return
+    else:
+        narrator "But it is locked!"
+        narrator "You must find the key!"
+
+    if not blind:
+        menu:
+
+            narrator "Where will you go?"
+
+            "forward":
+                narrator "You move forward. 10 seconds pass."
+                jump two_one
+
+            "right":
+                narrator "You move rightward. 10 seconds pass."
+                jump one_two
 
 label one_two:
     narrator "Where will you go?"
@@ -94,6 +130,9 @@ label one_three:
                 jump one_four
 
 label one_four:
+    python:
+        spaces_entered += 1
+
     if not entered_poison:
         if poison_direction == 0:
             narrator "This area is filled with poison gas! Did you not read the sign?"
@@ -118,6 +157,7 @@ label one_four:
         narrator "You did not survive this time."
         narrator "GAME OVER"
         return
+
 
 label two_two:
     python:
