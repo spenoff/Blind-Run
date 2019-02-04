@@ -61,7 +61,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-define config.main_menu_music = "Spooky.wav"
+define config.main_menu_music = "01_01.wav"
 
 
 ## Transitions #################################################################
@@ -128,6 +128,7 @@ default preferences.text_cps = 0
 default preferences.afm_time = 15
 
 
+
 ## Save directory ##############################################################
 ##
 ## Controls the platform-specific place Ren'Py will place the save files for
@@ -182,6 +183,8 @@ init python:
     build.classify('**/.**', None)
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
+
+    mm_root = "bg forest.png"
 
     ## To archive files, classify them as 'archive'.
 
