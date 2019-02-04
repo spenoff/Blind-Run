@@ -4,8 +4,8 @@
 # name of the character.
 
 define narrator = Character("Narrator")
-define witch_voice = Character("???", what_color="#41d846")
-define witch = Character("Witch", what_color="#41d846")
+define witch_voice = Character("???", what_color="#3f9e3f")
+define witch = Character("Witch", what_color="#3f9e3f")
 define lion = Character("Lion")
 define cub = Character("Cub")
 define cub_voice = Character("???")
@@ -108,7 +108,7 @@ label one_one:
         scene bg blind
         narrator "You can feel the treasure chest."
     else:
-        scene bg forest
+        scene bg no_downwards_leftwards
         show treasure_chest at Position(xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
         narrator "You found the treasure chest!"
 
@@ -197,7 +197,7 @@ label one_two:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg no_downwards
 
 
     if treasure_key_obtained and blind:
@@ -222,7 +222,7 @@ label one_two:
             python:
                 blind = False
 
-            scene bg forest
+            scene bg no_downwards
             show witch at Position(xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
             witch "Well goodbye!"
             witch ""
@@ -305,7 +305,7 @@ label one_three:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg poison_warning
 
     narrator "Where will you go?"
 
@@ -376,7 +376,7 @@ label one_four:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg poison_space
     stop music
     play music "poison.mp3"
 
@@ -432,7 +432,7 @@ label two_one:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg no_leftwards
 
     if treasure_key_obtained and blind:
         stop music
@@ -455,7 +455,7 @@ label two_one:
             python:
                 blind = False
 
-            scene bg forest
+            scene bg no_leftwards
             show witch at Position(xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
             witch "Well goodbye!"
             witch ""
@@ -543,7 +543,7 @@ label two_two:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg all
 
     narrator "Where will you go?"
 
@@ -603,7 +603,7 @@ label two_three:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg all
 
     narrator "Where will you go?"
 
@@ -663,7 +663,7 @@ label two_four:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg no_rightwards
 
     narrator "Where will you go?"
 
@@ -736,7 +736,7 @@ label three_one:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg no_leftwards
 
     if blind:
         narrator "You bump into a lion."
@@ -979,7 +979,7 @@ label three_two:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg all
 
     if not blind:
 
@@ -1043,7 +1043,7 @@ label three_three:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg all
 
     if not blind:
 
@@ -1101,7 +1101,7 @@ label three_four:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg no_rightwards
 
     if not blind:
 
@@ -1166,7 +1166,7 @@ label four_one:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg no_forwards_leftwards
 
     if not blind:
 
@@ -1241,7 +1241,7 @@ label four_two:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg no_forwards
 
     if not blind:
 
@@ -1306,10 +1306,10 @@ label four_three:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg cave
 
     if not cub_found and not blind:
-        narrator "You see a cave in the distance."
+        narrator "You see a cave."
 
     if has_become_blind and not cub_found:
         stop music
@@ -1387,7 +1387,7 @@ label four_four:
     if blind:
         scene bg blind
     else:
-        scene bg forest
+        scene bg answer_map
 
     if not blind:
 

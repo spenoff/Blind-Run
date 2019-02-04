@@ -1,0 +1,14 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 226: expected 'image_name_component' not found.
+    show "lion_and_cub.png" at Position(xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
+         ^
+
+File "game/script.rpy", line 459: expected 'image_name_component' not found.
+    show "lion_and_cub.png" at Position(xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
+         ^
+
+Ren'Py Version: Ren'Py 7.1.3.1092
+Sun Feb  3 21:52:35 2019
